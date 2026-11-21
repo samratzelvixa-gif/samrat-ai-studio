@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png"><title>SAMRAT AI STUDIO</title>
+<style>
+:root{--bg:#0b1020;--panel:#141d33;--panel2:#1b2945;--text:#f3f6ff;--muted:#a9b5ce;--accent:#7c9cff;--line:#2a3855;--green:#35c98a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#1d3260 0,#0b1020 42%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:25px 17px 18px;text-align:center;border-bottom:1px solid var(--line)}
+.logo{display:inline-grid;place-items:center;width:54px;height:54px;border-radius:17px;background:linear-gradient(135deg,#6d8cff,#9d6bff);font-size:26px;font-weight:900}
+h1{margin:10px 0 4px;font-size:25px;letter-spacing:.4px}header p{margin:0;color:var(--muted);font-size:13px}
+main{max-width:900px;margin:0 auto;padding:17px 13px 35px}
+.welcome{background:linear-gradient(120deg,#263d70,#35285f);border:1px solid #52669a;border-radius:18px;padding:18px;margin-bottom:18px}
+.welcome h2{margin:0 0 7px;font-size:20px}.welcome p{margin:0;color:#d8e1ff;font-size:14px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px;min-height:120px;text-align:left;color:var(--text);cursor:pointer}
+.tile:active{transform:scale(.985)}.icon{font-size:25px}.tile h3{margin:8px 0 4px;font-size:15px}.tile p{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+.section{display:none;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:15px}
+.section.active{display:block}.section h2{margin:0 0 12px;font-size:19px}
+label{display:block;margin:12px 0 5px;color:#dce5ff;font-size:13px;font-weight:650}
+input,textarea,select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:#0d1528;color:var(--text);font:inherit}
+textarea{min-height:100px;resize:vertical}
+button.action{border:0;border-radius:10px;background:var(--accent);color:#10182b;padding:11px 15px;margin:10px 7px 0 0;font-weight:750}
+button.back{border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text);padding:10px 13px;margin-top:10px}
+.output{white-space:pre-wrap;background:#0d1528;border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:12px;min-height:42px;color:#e7edff;font-size:14px}
+.note{color:var(--muted);font-size:12px;line-height:1.5}.badge{display:inline-block;background:#23385e;color:#cfe0ff;border-radius:20px;padding:4px 9px;font-size:11px}
+#preview{max-width:100%;max-height:320px;display:block;margin-top:12px;border-radius:10px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px 10px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style></head>
+<body>
+<header><div class="logo">S</div><h1>SAMRAT AI STUDIO</h1><p>Your creative & learning workspace</p></header>
+<main>
+<div class="welcome"><h2>नमस्ते! आपका AI Studio तैयार है ✨</h2><p>लिखने, पढ़ने, आइडिया बनाने और क्रिएटिव कामों के लिए एक ही जगह। कुछ टूल अभी ऑफलाइन काम करते हैं; असली AI चैट, इमेज और वीडियो जनरेशन जोड़ने के लिए सुरक्षित AI सेवा कनेक्शन चाहिए।</p></div>
+<div class="grid" id="home">
+<button class="tile" onclick="openTool('writer')"><div class="icon">✍️</div><h3>AI Writing Desk</h3><p>लेख, कहानी, स्क्रिप्ट और कैप्शन का ड्राफ्ट तैयार करें।</p></button>
+<button class="tile" onclick="openTool('ideas')"><div class="icon">💡</div><h3>Idea Generator</h3><p>वीडियो, चैनल और प्रोजेक्ट के लिए आइडिया सूची।</p></button>
+<button class="tile" onclick="openTool('study')"><div class="icon">📚</div><h3>Study & MCQ Maker</h3><p>अपने प्रश्न जोड़ें और छोटा MCQ टेस्ट लें।</p></button>
+<button class="tile" onclick="openTool('photo')"><div class="icon">🖼️</div><h3>Photo Lab</h3><p>फोटो खोलें, फ़िल्टर लगाएँ और सेव करें।</p></button>
+<button class="tile" onclick="openTool('prompt')"><div class="icon">🪄</div><h3>Prompt Builder</h3><p>AI टूल के लिए स्पष्ट प्रॉम्प्ट तैयार करें।</p></button>
+<button class="tile" onclick="openTool('text')"><div class="icon">🔤</div><h3>Text Tools</h3><p>शब्द गिनें, टेक्स्ट साफ़ करें और कॉपी करें।</p></button>
+<button class="tile" onclick="openTool('chat')"><div class="icon">💬</div><h3>AI Chat</h3><p>AI चैट स्क्रीन का शुरुआती डेमो।</p></button>
+<button class="tile" onclick="openTool('media')"><div class="icon">🎬</div><h3>Image & Video Studio</h3><p>जनरेशन फीचर के लिए तैयार सेक्शन।</p></button>
+<button class="tile" onclick="openTool('pdf')"><div class="icon">📄</div><h3>PDF Assistant</h3><p>PDF चुनें; AI सारांश कनेक्शन अगला चरण है।</p></button>
+</div>
+
+<section class="section" id="writer"><h2>✍️ Writing Desk</h2><label>क्या लिखना है?</label><select id="wtype"><option>YouTube वीडियो स्क्रिप्ट</option><option>Instagram कैप्शन</option><option>कहानी</option><option>स्कूल निबंध</option><option>भाषण</option><option>प्रोजेक्ट विवरण</option></select><label>विषय / मुख्य बातें</label><textarea id="winput" placeholder="अपना विषय और जरूरी बातें लिखें..."></textarea><button class="action" onclick="makeDraft()">ड्राफ्ट बनाएँ</button><div class="output" id="wout">आपका ड्राफ्ट यहाँ दिखेगा।</div><button class="back" onclick="copyText('wout')">कॉपी करें</button><p class="note">यह शुरुआती टेम्पलेट-आधारित ड्राफ्ट है, ऑनलाइन AI जनरेशन नहीं।</p><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="ideas"><h2>💡 Idea Generator</h2><label>किस चीज़ के आइडिया चाहिए?</label><input id="itopic" placeholder="जैसे: पढ़ाई, YouTube, टेक्नोलॉजी"><button class="action" onclick="makeIdeas()">आइडिया दिखाएँ</button><div class="output" id="iout">आइडिया यहाँ दिखेंगे।</div><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="study"><h2>📚 अपना MCQ टेस्ट बनाएँ</h2><label>प्रश्न</label><textarea id="sq" placeholder="प्रश्न लिखें"></textarea><div class="grid"><div><label>विकल्प A</label><input id="sa"></div><div><label>विकल्प B</label><input id="sb"></div><div><label>विकल्प C</label><input id="sc"></div><div><label>विकल्प D</label><input id="sd"></div></div><label>सही विकल्प</label><select id="sans"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select><button class="action" onclick="addMCQ()">प्रश्न जोड़ें</button><button class="action" onclick="beginMCQ()">टेस्ट शुरू</button><p class="note" id="scount">कुल प्रश्न: 0</p><div id="testbox" class="output">टेस्ट यहाँ खुलेगा।</div><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="photo"><h2>🖼️ Photo Lab</h2><label>अपने मोबाइल से फोटो चुनें</label><input type="file" id="photoFile" accept="image/*" onchange="loadPhoto(event)"><label>फ़िल्टर</label><select id="filter" onchange="applyFilter()"><option value="none">Original</option><option value="grayscale(1)">Black & White</option><option value="sepia(1)">Sepia</option><option value="contrast(1.4) saturate(1.3)">Contrast</option><option value="brightness(1.2)">Bright</option></select><img id="preview" class="hidden"><button class="action" onclick="savePhoto()">फोटो सेव करें</button><p class="note">फोटो आपके ब्राउज़र में ही प्रोसेस होती है।</p><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="prompt"><h2>🪄 Prompt Builder</h2><label>किस तरह का परिणाम चाहिए?</label><select id="ptype"><option>एक सुंदर पोस्टर</option><option>YouTube वीडियो स्क्रिप्ट</option><option>एक शैक्षिक इन्फोग्राफिक</option><option>एक कहानी</option><option>मोबाइल ऐप का डिजाइन</option></select><label>विषय और स्टाइल</label><textarea id="pdetail" placeholder="रंग, भाषा, विषय, आकार आदि लिखें"></textarea><button class="action" onclick="buildPrompt()">Prompt बनाएँ</button><div class="output" id="pout"></div><button class="back" onclick="copyText('pout')">कॉपी करें</button><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="text"><h2>🔤 Text Tools</h2><label>अपना टेक्स्ट लिखें</label><textarea id="tinput" oninput="countWords()"></textarea><p class="note" id="tcount">शब्द: 0 · अक्षर: 0</p><button class="action" onclick="cleanText()">अतिरिक्त खाली जगह हटाएँ</button><button class="back" onclick="copyText('tinput')">कॉपी करें</button><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="chat"><h2>💬 AI Chat <span class="badge">Demo</span></h2><p class="note">यह चैट इंटरफेस का डेमो है। असली AI जवाब पाने के लिए सुरक्षित सर्वर और AI API कनेक्शन जोड़ना होगा।</p><label>आपका संदेश</label><textarea id="chatinput" placeholder="अपना सवाल लिखें"></textarea><button class="action" onclick="demoChat()">भेजें</button><div class="output" id="chatout">AI जवाब यहाँ दिखाई देगा, कनेक्शन जुड़ने के बाद।</div><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="media"><h2>🎬 Image & Video Studio</h2><p>यहाँ आगे चलकर टेक्स्ट से इमेज और वीडियो बनाने की सुविधा जोड़ी जाएगी।</p><p class="note">इसके लिए किसी AI image/video provider का कनेक्शन, उसकी उपयोग-सीमा और संभवतः अलग अनुमति चाहिए। इस डेमो में जनरेशन सक्रिय नहीं है।</p><button class="back" onclick="goHome()">← होम</button></section>
+
+<section class="section" id="pdf"><h2>📄 PDF Assistant</h2><label>PDF चुनें</label><input type="file" id="pdffile" accept="application/pdf"><p class="note">यह संस्करण PDF फ़ाइल चुनने देता है, लेकिन उसके अंदर का टेक्स्ट पढ़कर सारांश बनाने के लिए PDF parser और AI कनेक्शन अगले चरण में जोड़ना होगा।</p><div class="output" id="pdfout">अभी कोई PDF नहीं चुनी गई।</div><button class="action" onclick="showPDF()">फ़ाइल की जानकारी</button><button class="back" onclick="goHome()">← होम</button></section>
+</main><footer>Created by Mr. Shubham Samrat · SAMRAT AI STUDIO</footer>
+<script>
+let mcqs=[],mi=0,ms=0,photoURL=null;
+function openTool(id){document.getElementById('home').style.display='none';document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function goHome(){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('home').style.display='grid';window.scrollTo(0,0)}
+function copyText(id){let el=document.getElementById(id);let t=el.value!==undefined?el.value:el.innerText;navigator.clipboard?.writeText(t).then(()=>alert('कॉपी हो गया।')).catch(()=>alert('टेक्स्ट चुनकर कॉपी करें।'))}
+function makeDraft(){let topic=document.getElementById('winput').value.trim(),type=document.getElementById('wtype').value;if(!topic){alert('पहले विषय लिखें।');return}document.getElementById('wout').textContent=`शीर्षक: ${topic.split('\\n')[0]}\\n\\nभूमिका:\\nआज हम "${topic}" विषय पर बात करेंगे। यह विषय समझने और दूसरों तक सही जानकारी पहुँचाने के लिए उपयोगी है।\\n\\nमुख्य बातें:\\n${topic}\\n\\nसमापन:\\nउम्मीद है यह जानकारी उपयोगी लगी होगी। धन्यवाद!\\n\\n[यह ${type} का शुरुआती ड्राफ्ट है। इसे अपनी जरूरत के अनुसार सुधारें।]`}
+function makeIdeas(){let t=document.getElementById('itopic').value.trim()||'नया प्रोजेक्ट';let arr=['शुरुआती लोगों के लिए '+t+' की गाइड','5 आम गलतियाँ और उनके आसान समाधान','एक मिनट में '+t+' समझाएँ','पहले और बाद का उदाहरण दिखाएँ','दर्शकों के सवालों के जवाब','7 दिनों की छोटी चुनौती','रोचक तथ्य और क्विज़','अपना अनुभव और सीखी गई बातें'];document.getElementById('iout').textContent=arr.map((x,i)=>(i+1)+'. '+x).join('\\n')}
+function buildPrompt(){let d=document.getElementById('pdetail').value.trim();if(!d){alert('विवरण लिखें।');return}document.getElementById('pout').textContent=`कृपया ${document.getElementById('ptype').value} तैयार करें।\\nविषय/विवरण: ${d}\\nभाषा: सरल हिंदी\\nगुणवत्ता: साफ, आकर्षक, सही और उपयोग में आसान\\nजरूरत: दिए गए विषय से न भटकें और कोई तथ्य गढ़ें नहीं।`}
+function countWords(){let t=document.getElementById('tinput').value;let words=t.trim()?t.trim().split(/\\s+/).length:0;document.getElementById('tcount').textContent=`शब्द: ${words} · अक्षर: ${t.length}`}
+function cleanText(){let e=document.getElementById('tinput');e.value=e.value.replace(/[ \\t]+/g,' ').replace(/\\n{3,}/g,'\\n\\n').trim();countWords()}
+function addMCQ(){let q=document.getElementById('sq').value.trim(),o=['sa','sb','sc','sd'].map(x=>document.getElementById(x).value.trim());if(!q||o.some(x=>!x)){alert('प्रश्न और चारों विकल्प भरें।');return}mcqs.push({q,o,a:+document.getElementById('sans').value});document.getElementById('sq').value='';['sa','sb','sc','sd'].forEach(x=>document.getElementById(x).value='');document.getElementById('scount').textContent='कुल प्रश्न: '+mcqs.length}
+function beginMCQ(){if(!mcqs.length){alert('पहले प्रश्न जोड़ें।');return}mi=0;ms=0;showMCQ()}
+function showMCQ(){let q=mcqs[mi],box=document.getElementById('testbox');box.innerHTML='';let title=document.createElement('b');title.textContent=`प्रश्न ${mi+1}/${mcqs.length}: ${q.q}`;box.appendChild(title);q.o.forEach((v,i)=>{let b=document.createElement('button');b.className='action';b.style.display='block';b.textContent='ABCD'[i]+'. '+v;b.onclick=()=>{[...box.querySelectorAll('button')].forEach(x=>x.disabled=true);let f=document.createElement('p');if(i===q.a){ms++;f.textContent='सही उत्तर!'}else f.textContent='गलत। सही उत्तर: '+'ABCD'[q.a]+'. '+q.o[q.a];box.appendChild(f);let n=document.createElement('button');n.className='action';n.textContent=mi===mcqs.length-1?'रिजल्ट':'अगला प्रश्न';n.onclick=()=>{if(mi<mcqs.length-1){mi++;showMCQ()}else box.textContent=`टेस्ट पूरा! आपका स्कोर: ${ms}/${mcqs.length}`};box.appendChild(n)};box.appendChild(b)})}
+function loadPhoto(e){let f=e.target.files[0];if(!f)return;if(photoURL)URL.revokeObjectURL(photoURL);photoURL=URL.createObjectURL(f);let im=document.getElementById('preview');im.src=photoURL;im.classList.remove('hidden');applyFilter()}
+function applyFilter(){document.getElementById('preview').style.filter=document.getElementById('filter').value}
+function savePhoto(){let im=document.getElementById('preview');if(!im.src){alert('पहले फोटो चुनें।');return}let c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;let x=c.getContext('2d');x.filter=document.getElementById('filter').value;x.drawImage(im,0,0);let a=document.createElement('a');a.download='samrat-edited-photo.png';a.href=c.toDataURL('image/png');a.click()}
+function demoChat(){let q=document.getElementById('chatinput').value.trim();document.getElementById('chatout').textContent=q?'यह अभी डेमो स्क्रीन है। असली AI उत्तर के लिए AI सेवा कनेक्ट करनी होगी। आपका सवाल: '+q:'पहले अपना सवाल लिखें।'}
+function showPDF(){let f=document.getElementById('pdffile').files[0];document.getElementById('pdfout').textContent=f?`चुनी गई फ़ाइल: ${f.name}\\nआकार: ${(f.size/1024).toFixed(1)} KB\\nअभी PDF पढ़ना/सारांश बनाना सक्रिय नहीं है।`:'पहले PDF चुनें।'}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>
